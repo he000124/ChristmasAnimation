@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christmas Animation</title>
+    <style>
+        body {
+            background-color: #2b3a42;
+            font-family: 'Arial', sans-serif;
+            color: white;
+            text-align: center;
+            margin: 0;
+            overflow: hidden;
+        }
+        .message {
+            margin-top: 20vh;
+            font-size: 2rem;
+            animation: fadeIn 2s ease-in-out;
+        }
+        .tree {
+            font-size: 3rem;
+            color: #32cd32;
+            animation: sparkle 1.5s infinite alternate;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        @keyframes sparkle {
+            0% { text-shadow: 0 0 10px #32cd32; }
+            100% { text-shadow: 0 0 20px #32cd32; }
+        }
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 10px white;
+            animation: twinkle 2s infinite;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+    </style>
+</head>
+<body>
+    <div class="message">
+        🎄 Merry Christmas and Happy New Year! 🎉
+    </div>
+    <div class="tree">🎄🎄🎄</div>
+    <div class="stars">
+        <!-- Generating stars dynamically -->
+        <script>
+            const starsContainer = document.querySelector('.stars');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 5 + 's';
+                starsContainer.appendChild(star);
+            }
+        </script>
+    </div>
+</body>
+</html>
